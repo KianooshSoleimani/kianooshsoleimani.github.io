@@ -35,7 +35,7 @@
     ]
   },
   "resume": {
-    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "skillmessage": "My Skills",
     "education": [
       {
         "school": "Islamic Republic Azad University",
@@ -54,22 +54,6 @@
     ],
     "skills": [
       {
-        "name": "Git",
-        "level": "60%"
-      },
-      {
-        "name": "ReactJs",
-        "level": "75%"
-      },
-      {
-        "name": "CSS",
-        "level": "90%"
-      },
-      {
-        "name": "HTML5",
-        "level": "80%"
-      },
-      {
         "name": "ReactNative",
         "level": "100%"
       },
@@ -78,12 +62,32 @@
         "level": "100%"
       },
       {
+        "name": "Git",
+        "level": "60%"
+      },
+      {
+        "name": "HTML5",
+        "level": "60%"
+      },
+      {
+        "name": "CSS",
+        "level": "60%"
+      },
+      {
+        "name": "JavaScript",
+        "level": "75%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "60%"
+      },
+      {
         "name": "NodeJS",
-        "level": "55%"
+        "level": "40%"
       },
       {
         "name": "MongoDB",
-        "level": "55%"
+        "level": "40%"
       }
     ]
   },
@@ -93,12 +97,16 @@
   "testimonials": {
     "testimonials": [
       {
-        "text": "Very Hard Working Boy I Had ever seen",
+        "text": "Very Hard Working Boy!",
         "user": "Ahmad NeshatFar"
       },
       {
-        "text": "That Kianoosh must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+        "text": "That Kianoosh must be one of the most brilliant developers I've ever met!",
         "user": "Yaser Papi"
+      },
+      {
+        "text": "He is Fantastic.",
+        "user": "Kazem Arjmand"
       }
     ]
   }
