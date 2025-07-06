@@ -11,7 +11,10 @@
   },
   "scripts": {
     "dev": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" react-scripts build",
+    "copy-files": "cp build/index.html ./index.html && cp -r build/static ./static && cp build/service-worker.js ./service-worker.js && cp build/precache-manifest.*.js ./ && cp build/asset-manifest.json ./asset-manifest.json && cp -r public/css ./css && cp -r public/js ./js && cp public/resumeData.json ./resumeData.json && cp -r public/images ./images && cp public/manifest.json ./manifest.json && cp public/favicon.ico ./favicon.ico",
+    "deploy": "npm run build && npm run copy-files",
+    "deploy-and-push": "npm run deploy && git add -A && git commit -m \"Deploy React portfolio\" && git push origin master",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
