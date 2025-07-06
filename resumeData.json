@@ -1,0 +1,113 @@
+{
+  "main": {
+    "name": "Kianoosh Soleimani",
+    "occupation": "Full Stack Developer",
+    "description": "",
+    "image": "profilepic.jpg",
+    "bio": "Still Learning",
+    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "kianooshsoleimani@gmail.com",
+    "phone": "+989359333993",
+    "address": {
+      "street": "",
+      "city": "Mashhad",
+      "state": "Iran",
+      "zip": "+98"
+    },
+    "website": "https://karboom.io/cv/mopjky",
+    "resumedownload": "https://karboom.io/cv/mopjky/standard/download",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/kianoosh-soleimani-b56831170/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "instagram",
+        "url": "http://instagram.com/mr_kianoosh_soleimani",
+        "className": "fa fa-instagram"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/KianooshSoleimani",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "My Skills",
+    "education": [
+      {
+        "school": "Islamic Republic Azad University",
+        "degree": "Masters in Electrical Engeering",
+        "graduated": "2014-2018",
+        "description": "Provide a secure platform for transferring vital patient data through Android and iOS applications"
+      }
+    ],
+    "work": [
+      {
+        "company": "SabanaCo",
+        "title": "Senior ReactNative Developer",
+        "years": "June 2018 - Present",
+        "description": "Working on international freight transportation application in Iran"
+      }
+    ],
+    "skills": [
+      {
+        "name": "ReactNative",
+        "level": "100%"
+      },
+      {
+        "name": "Android",
+        "level": "100%"
+      },
+      {
+        "name": "Git",
+        "level": "60%"
+      },
+      {
+        "name": "HTML5",
+        "level": "60%"
+      },
+      {
+        "name": "CSS",
+        "level": "60%"
+      },
+      {
+        "name": "JavaScript",
+        "level": "75%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "60%"
+      },
+      {
+        "name": "NodeJS",
+        "level": "40%"
+      },
+      {
+        "name": "MongoDB",
+        "level": "40%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": []
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "Very Hard Working Boy!",
+        "user": "Ahmad NeshatFar"
+      },
+      {
+        "text": "That Kianoosh must be one of the most brilliant developers I've ever met!",
+        "user": "Yaser Papi"
+      },
+      {
+        "text": "He is Fantastic.",
+        "user": "Kazem Arjmand"
+      }
+    ]
+  }
+}
