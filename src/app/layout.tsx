@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const mono = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], display: "swap" });
 
-const title = `${profile.name} — ${profile.currentRole.title}`;
-const description = profile.subHeadline;
+const title = `${profile.name} (${profile.fa.name}) — Senior Full-Stack Engineer`;
+const description = `${profile.name}, also known as ${profile.shortName} Soleimani: ${profile.subHeadline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "Kianoosh Soleimani",
+    ...profile.nameVariants,
     "full-stack engineer",
     "TypeScript",
     "React",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: profile.name, url: SITE_URL }],
   creator: profile.name,
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { en: "/", fa: "/fa/", "x-default": "/" } },
   openGraph: {
     type: "profile",
     url: SITE_URL,
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     description,
     siteName: profile.name,
     locale: "en_GB",
+    alternateLocale: ["fa_IR"],
     firstName: "Kianoosh",
     lastName: "Soleimani",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: `${profile.name} — ${profile.headline}` }],

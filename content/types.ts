@@ -43,9 +43,22 @@ export interface Link {
   href: string;
 }
 
+export interface PersianProfile {
+  name: string;
+  fullName: string;
+  nickname: string;
+  headline: string;
+  summary: string[];
+  title: string;
+  description: string;
+}
+
 export interface Profile {
   name: string;
   shortName: string;
+  /** Every spelling / script of the name that should find this site. */
+  nameVariants: string[];
+  fa: PersianProfile;
   headline: string;
   subHeadline: string;
   /** Exactly four sentences, one per line. */
