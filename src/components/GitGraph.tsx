@@ -184,7 +184,7 @@ export function GitGraph({ branches, layout }: { branches: Branch[]; layout: Gra
         </ol>
       </div>
       <p className="mt-3 font-mono text-xs text-muted">
-        ≈ marks an estimated month · ○ ring = a chapter merged back into main · "current" = still ongoing
+        ≈ marks an estimated month · ○ ring = a chapter merged back into main · &quot;current&quot; = still ongoing
       </p>
     </div>
   );
