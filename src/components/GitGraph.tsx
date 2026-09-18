@@ -184,7 +184,7 @@ export function GitGraph({ branches, layout }: { branches: Branch[]; layout: Gra
         </ol>
       </div>
       <p className="mt-3 font-mono text-xs text-muted">
-        ≈ marks an estimated month · ○ ring = a chapter merged back into main · HEAD → = current
+        ≈ marks an estimated month · ○ ring = a chapter merged back into main · "current" = still ongoing
       </p>
     </div>
   );
@@ -229,14 +229,14 @@ function Row({
           <time dateTime={c.date} className="font-mono text-xs text-muted">
             {c.period ?? formatMonth(c.date, c.approx)}
           </time>
-          <span className="font-mono text-xs text-muted/70">{shortSha(c.id)}</span>
+          <span className="hidden font-mono text-xs text-muted/70 sm:inline">{shortSha(c.id)}</span>
           {isHead ? (
             <span
               className="rounded-sm border px-1.5 font-mono text-[10px] leading-5"
               style={{ borderColor: branch.color, color: branch.color }}
             >
-              {open ? "HEAD → " : ""}
               {branch.label}
+              {open ? " · current" : ""}
             </span>
           ) : null}
           {c.tags?.map((t) => (
