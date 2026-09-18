@@ -1,27 +1,36 @@
 {
-  "name": "create-react-app",
+  "name": "kianooshsoleimani.github.io",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
-    "react-ga": "^2.3.5",
-    "react-scripts": "2.1.1"
-  },
   "scripts": {
-    "dev": "BROWSER=none react-scripts start",
-    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" react-scripts build",
-    "copy-files": "cp build/index.html ./index.html && cp -r build/static ./static && cp build/service-worker.js ./service-worker.js && cp build/precache-manifest.*.js ./ && cp build/asset-manifest.json ./asset-manifest.json && cp -r public/css ./css && cp -r public/js ./js && cp public/resumeData.json ./resumeData.json && cp -r public/images ./images && cp public/manifest.json ./manifest.json && cp public/favicon.ico ./favicon.ico",
-    "deploy": "npm run build && npm run copy-files",
-    "deploy-and-push": "npm run deploy && git add -A && git commit -m \"Deploy React portfolio\" && git push origin master",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cv:pdf": "tsx scripts/cv-pdf.mts",
+    "cv:docx": "tsx scripts/cv-docx.mts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm test"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.20.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "docx": "^9.7.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5",
+    "vitest": "^5.0.1"
+  }
 }

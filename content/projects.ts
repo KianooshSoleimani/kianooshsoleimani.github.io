@@ -1,0 +1,96 @@
+import type { Project } from "./types";
+
+export const projects: Project[] = [
+  {
+    id: "humanet",
+    name: "Humanet — AI layer for a healthcare EHR platform",
+    owner: "NovaByte Solutions Inc.",
+    period: "2025 – present",
+    role: "Full-stack developer, owner of the AI and workflow layer",
+    description:
+      "Production electronic-health-record platform. Built the AI features clinicians use daily and the durable workflow engine behind appointments, forms, prescriptions, referrals and tasks.",
+    highlights: [
+      "Conversational assistant, intent classification and evidence-grounded clinical data extraction on AWS Bedrock (Claude) in NestJS.",
+      "AI medical scribe: chunked audio upload to S3, AWS Transcribe processing, SOAP note drafts with evidence-linked suggested actions.",
+      "Workflow-automation engine on BullMQ/Redis with event triggers, conditional branching, runtime variables and resumable steps.",
+      "Per-model token metering and monthly spend budgeting so AI cost is visible and capped.",
+    ],
+    stack: ["NestJS", "TypeScript", "AWS Bedrock", "AWS Transcribe", "BullMQ", "Redis", "MongoDB", "S3"],
+    branch: "novabyte",
+    featured: true,
+  },
+  {
+    id: "sabana-platform",
+    name: "Sabana — ride-hailing platform",
+    owner: "Sabana",
+    period: "2018 – 2025",
+    role: "Front-end → full-stack owner",
+    description:
+      "Driver app, customer product and partner admin panel, plus backend microservices. Grew from front-end feature work into ownership of the whole platform over seven years.",
+    highlights: [
+      "70% improvement in app performance across the driver and customer apps.",
+      "Two production NestJS microservices: SMS notifications and an EU customs (ICS2/ENS) data-exchange integration, deployed via GitHub Actions.",
+      "Shared, unit-tested UI component library giving web and mobile parity.",
+      "Mentored junior developers through code review and pairing on React/React Native.",
+    ],
+    stack: ["React Native", "React", "Next.js", "TypeScript", "NestJS", "Node.js", "Jest", "GitHub Actions"],
+    branch: "sabana",
+    featured: true,
+  },
+  {
+    id: "evns-arcarius",
+    name: "EVNS (real estate) & Arcarius Capital (fintech)",
+    owner: "NovaByte Solutions Inc.",
+    period: "2025 – present",
+    role: "Full-stack developer",
+    description:
+      "Client platforms delivered in Agile/Scrum sprints: React, Next.js and React Native front ends against Node.js, NestJS and GraphQL back ends, with CI/CD and cloud infrastructure owned end-to-end.",
+    highlights: [
+      "GitHub Actions pipelines building and deploying on every commit.",
+      "AWS, MongoDB and Firebase infrastructure behind both products.",
+    ],
+    stack: ["Next.js", "React Native", "NestJS", "GraphQL", "AWS", "Firebase"],
+    branch: "novabyte",
+    featured: true,
+  },
+  {
+    id: "freelance",
+    name: "Freelance products (nine, 2015 – present)",
+    owner: "Clients in Dubai, Armenia and the US",
+    period: "2015 – present",
+    role: "Solo engineer: requirements → delivery",
+    description:
+      "HomeTrust (admin panel and web app), TravelLeadApp, a customer/driver taxi-hailing app pair, and Dayra and Sadaf (marketing site, web app and API each).",
+    highlights: ["Each engagement run solo from requirements through release.", "Part-time, alongside full-time roles."],
+    stack: ["React", "Next.js", "React Native", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Firebase"],
+    branch: "freelance",
+    featured: true,
+  },
+  {
+    id: "rn-components",
+    name: "React Native components on npm",
+    owner: "Open source",
+    period: "2022",
+    role: "Author",
+    description: "react-native-gp-button (button group) and react-native-dropdown-searchable (searchable FlatList dropdown).",
+    highlights: [],
+    stack: ["React Native", "npm"],
+    links: [
+      { label: "react-native-gp-button", href: "https://www.npmjs.com/package/react-native-gp-button" },
+      { label: "react-native-dropdown-searchable", href: "https://www.npmjs.com/package/react-native-dropdown-searchable" },
+    ],
+    branch: "oss",
+  },
+  {
+    id: "vpn-tester",
+    name: "windscribe-vpn-tester",
+    owner: "Open source",
+    period: "2026",
+    role: "Author",
+    description: "Automated tool that tests every Windscribe location and protocol/port combination, measuring latency and connection reliability on macOS and Windows.",
+    highlights: [],
+    stack: ["Node.js"],
+    links: [{ label: "GitHub", href: "https://github.com/KianooshSoleimani/windscribe-vpn-tester" }],
+    branch: "oss",
+  },
+];
