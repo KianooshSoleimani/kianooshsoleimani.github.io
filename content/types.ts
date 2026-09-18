@@ -32,6 +32,10 @@ export interface Commit {
   links?: { label: string; href: string }[];
   /** Technologies touched in this commit. */
   stack?: string[];
+  /** Role highlights (filled from experience.ts for "joined" nodes). */
+  highlights?: string[];
+  /** Period label, e.g. "Apr 2018 – Mar 2025", shown on "joined" nodes. */
+  period?: string;
 }
 
 export interface Link {

@@ -45,8 +45,8 @@ describe("profile content", () => {
 });
 
 describe("other content", () => {
-  it("projects reference known branches", () => {
-    const ids = new Set(branches.map((b) => b.id));
+  it("projects reference known branches (or the open-source pseudo-branch)", () => {
+    const ids = new Set([...branches.map((b) => b.id), "oss"]);
     for (const p of projects) expect(ids.has(p.branch), p.id).toBe(true);
   });
   it("has skills and education", () => {

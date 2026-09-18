@@ -69,12 +69,8 @@ export function GitGraph({ branches, layout }: { branches: Branch[]; layout: Gra
   const x = (lane: number) => lane * laneW + laneW / 2 + 3;
   const dim = (branch: string) => active !== null && active !== branch;
 
-  // First (newest) commit per branch gets a ref label, like `git log --decorate`.
-  const headOf = useMemo(() => {
-    const m = new Map<string, string>();
-    for (const n of layout.nodes) if (!m.has(n.commit.branch)) m.set(n.commit.branch, n.commit.id);
-    return m;
-  }, [layout.nodes]);
+  // The tip of each branch gets a ref label, like `git log --decorate`.
+  const headOf = useMemo(() => new Map(Object.entries(layout.heads)), [layout.heads]);
 
   return (
     <div>
@@ -188,7 +184,7 @@ export function GitGraph({ branches, layout }: { branches: Branch[]; layout: Gra
         </ol>
       </div>
       <p className="mt-3 font-mono text-xs text-muted">
-        ≈ marks an estimated month · ○ ring = merge (collaboration or branch closed) · dashed = cross-branch parent
+        ≈ marks an estimated month · ○ ring = a chapter merged back into main · HEAD → = current
       </p>
     </div>
   );
@@ -218,7 +214,7 @@ function Row({
   register: (el: HTMLElement | null) => void;
 }) {
   const c = node.commit;
-  const hasMore = Boolean(c.body || c.stack?.length || c.people?.length || c.links?.length);
+  const hasMore = Boolean(c.body || c.highlights?.length || c.stack?.length || c.people?.length || c.links?.length);
   const id = `commit-${c.id}`;
   return (
     <li
@@ -231,7 +227,7 @@ function Row({
       <article className="py-3 pr-4 sm:py-3.5" aria-labelledby={`${id}-title`}>
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <time dateTime={c.date} className="font-mono text-xs text-muted">
-            {formatMonth(c.date, c.approx)}
+            {c.period ?? formatMonth(c.date, c.approx)}
           </time>
           <span className="font-mono text-xs text-muted/70">{shortSha(c.id)}</span>
           {isHead ? (
@@ -268,6 +264,16 @@ function Row({
         {hasMore && expanded ? (
           <div id={`${id}-body`} className="mt-2 space-y-2 text-sm text-muted">
             {c.body ? <p className="max-w-2xl">{c.body}</p> : null}
+            {c.highlights?.length ? (
+              <ul className="max-w-2xl space-y-1">
+                {c.highlights.map((h) => (
+                  <li key={h} className="flex gap-2">
+                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: branch.color }} aria-hidden />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             {c.people?.length ? (
               <p className="font-mono text-xs">
                 <span className="text-fg/70">with:</span> {c.people.join(", ")}

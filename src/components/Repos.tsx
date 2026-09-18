@@ -2,7 +2,7 @@ import { branches, projects } from "@content";
 import { Section } from "./Section";
 
 export function Repos() {
-  const color = new Map(branches.map((b) => [b.id, b.color]));
+  const color = new Map<string, string>([...branches.map((b) => [b.id, b.color] as [string, string]), ["oss", "#e879f9"]]);
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
   return (

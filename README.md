@@ -10,7 +10,7 @@ Everything you read on the site, in the CV page, in the PDF and in the DOCX come
 | File | What it holds |
 |---|---|
 | `content/profile.ts` | name, headline, four-line summary, location, right to work, links |
-| `content/career.ts` | the git history: `branches` (employers, freelance, open source, education) and `commits` (dated milestones, merges = collaborations/hand-offs, tags = releases) |
+| `content/career.ts` | the git history at company/position level: `branches` (employers, freelance, education) and `commits` (joined / promoted / left, oldest first); a "joined" node shows that role's bullets from `experience.ts` when expanded |
 | `content/projects.ts` | products shown as repository cards |
 | `content/skills.ts` | grouped skills |
 | `content/education.ts` | degrees |

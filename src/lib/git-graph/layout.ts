@@ -27,7 +27,12 @@ export interface GraphLayout {
   lanes: Record<string, number>;
   /** branch id → true when the branch has no merge back into main */
   open: Record<string, boolean>;
+  /** branch id → id of its newest commit (the branch tip). */
+  heads: Record<string, string>;
+  direction: Direction;
 }
+
+export type Direction = "newest-first" | "oldest-first";
 
 /** "2018-04" → 2018*12+3 (months since year 0); "2018-04-15" is truncated to the month. */
 export function monthIndex(date: string): number {
@@ -128,7 +133,7 @@ export function assignLanes(
   return { lanes, laneCount: laneSpans.length, open };
 }
 
-export function layoutGraph(branches: Branch[], commits: Commit[]): GraphLayout {
+export function layoutGraph(branches: Branch[], commits: Commit[], direction: Direction = "newest-first"): GraphLayout {
   const color = new Map(branches.map((b) => [b.id, b.color]));
   for (const c of commits) {
     if (!color.has(c.branch)) throw new Error(`Commit "${c.id}" is on unknown branch "${c.branch}"`);
@@ -179,5 +184,14 @@ export function layoutGraph(branches: Branch[], commits: Commit[]): GraphLayout 
       edge(c, parent, "parent");
     }
   }
-  return { nodes, edges, laneCount, lanes, open };
+  const heads: Record<string, string> = {};
+  for (const n of nodes) if (!(n.commit.branch in heads)) heads[n.commit.branch] = n.commit.id;
+
+  if (direction === "oldest-first") {
+    const last = nodes.length - 1;
+    const flipped = [...nodes].reverse().map((n, row) => ({ ...n, row }));
+    const flippedEdges = edges.map((e) => ({ ...e, fromRow: last - e.fromRow, toRow: last - e.toRow }));
+    return { nodes: flipped, edges: flippedEdges, laneCount, lanes, open, heads, direction };
+  }
+  return { nodes, edges, laneCount, lanes, open, heads, direction };
 }

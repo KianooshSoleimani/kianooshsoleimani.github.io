@@ -71,6 +71,17 @@ describe("layoutGraph", () => {
     const fork = g.edges.find((e) => e.from === "a0" && e.to === "m0")!;
     expect(fork.color).toBe("#f00");
   });
+  it("exposes branch tips and can flip to oldest-first without changing edge identity", () => {
+    const g = layoutGraph(branches, commits);
+    expect(g.heads).toEqual({ main: "m1", a: "a1", b: "b1", c: "c0" });
+    const r = layoutGraph(branches, commits, "oldest-first");
+    expect(r.nodes.map((n) => n.commit.id)).toEqual(["m0", "a0", "a1", "m1", "b0", "c0", "b1"]);
+    expect(r.nodes.map((n) => n.row)).toEqual([0, 1, 2, 3, 4, 5, 6]);
+    expect(r.heads).toEqual(g.heads);
+    // oldest-first: every edge points UP to an older (smaller) row
+    for (const e of r.edges) expect(e.toRow).toBeLessThan(e.fromRow);
+    expect(r.nodes[r.edges.find((e) => e.from === "m1" && e.to === "a1")!.toRow].commit.id).toBe("a1");
+  });
   it("rejects a parent that is newer than its child", () => {
     const bad: Commit[] = [
       { id: "old", branch: "main", date: "2020-01", title: "old", parents: ["new"] },
