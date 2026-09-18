@@ -29,6 +29,7 @@ npm run lint
 npm run build      # static export → out/
 npm run cv:pdf     # prints /cv/ to out/Kianoosh-Soleimani-CV.pdf (needs `npx playwright install chromium` once)
 npm run cv:docx    # writes out/Kianoosh-Soleimani-CV.docx
+npm run og         # screenshots /og/ to out/og.png (social card)
 ```
 
 ## Deploy

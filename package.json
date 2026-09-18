@@ -12,7 +12,8 @@
     "cv:pdf": "tsx scripts/cv-pdf.mts",
     "cv:docx": "tsx scripts/cv-docx.mts",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm test"
+    "check": "npm run lint && npm run typecheck && npm test",
+    "og": "tsx scripts/og.mts"
   },
   "dependencies": {
     "next": "16.3.5",
