@@ -149,8 +149,7 @@ export const commits: Commit[] = [
   {
     id: "sb-lead",
     branch: "sabana",
-    date: "2020-05",
-    approx: true,
+    date: "2021-01",
     title: "Sabana — Full-Stack Developer, owner of the whole platform",
     body: "Grew from front-end feature work into ownership of the driver app, customer product, partner admin panel and the NestJS backend services.",
     tags: ["promotion"],
