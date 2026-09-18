@@ -35,7 +35,3 @@ npm run og         # screenshots /og/ to out/og.png (social card)
 ## Deploy
 
 `.github/workflows/deploy.yml`: pull requests run lint, tests and the build; pushes to `main` also generate the CV files and deploy to GitHub Pages. The custom domain is set in `public/CNAME`; DNS lives in Cloudflare (four `A` records to GitHub Pages + `CNAME www`, DNS-only).
-
-## Design notes
-
-See `docs/superpowers/specs/2026-09-18-portfolio-site-design.md`.
