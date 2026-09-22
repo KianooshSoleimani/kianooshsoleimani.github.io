@@ -20,9 +20,5 @@ export const certifications: Certification[] = [
 
 export const languages: Language[] = [
   { name: "Persian", level: "Native" },
-  {
-    name: "English",
-    level: "Upper-intermediate (B1–B2)",
-    detail: "Reading and speaking upper-intermediate; writing and listening intermediate.",
-  },
+  { name: "English", level: "Intermediate (B1)" },
 ];
