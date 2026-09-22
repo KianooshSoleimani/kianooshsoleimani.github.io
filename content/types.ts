@@ -98,6 +98,18 @@ export interface Project {
   featured?: boolean;
 }
 
+export interface Certification {
+  name: string;
+  issuer: string;
+  detail?: string;
+}
+
+export interface Language {
+  name: string;
+  level: string;
+  detail?: string;
+}
+
 export interface Education {
   institution: string;
   degree: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { education, profile, projects, skills } from "@content";
+import { certifications, education, languages, profile, projects, skills } from "@content";
 import { experience } from "@content/experience";
 import { CV_DOCX, CV_PDF } from "@/lib/site";
 
@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 };
 
 const oss = projects.filter((p) => p.branch === "oss");
+const linked = projects.filter((p) => p.branch !== "oss" && p.links?.length);
 
 export default function CvPage() {
   const site = profile.website.replace(/^https?:\/\//, "");
   return (
-    <main className="mx-auto max-w-[210mm] bg-bg px-5 py-8 text-[13px] leading-[1.45] text-fg print:max-w-none print:p-0 print:text-[10.5pt] sm:px-8">
+    <main className="mx-auto max-w-[210mm] bg-bg px-5 py-8 text-[13px] leading-[1.45] text-fg print:max-w-none print:p-0 print:text-[10.2pt] print:leading-[1.38] sm:px-8">
       <div className="no-print mb-6 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-card p-3 text-sm">
         <Link href="/" className="text-muted hover:text-fg">
           ← back to site
@@ -49,8 +50,8 @@ export default function CvPage() {
 
       <Section title="Experience">
         {experience.map((r) => (
-          <article key={r.company + r.period} className="mb-3.5 break-inside-avoid">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+          <article key={r.company + r.period} className="mb-3.5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-3 break-after-avoid">
               <h3 className="text-[13.5px] font-semibold print:text-[11pt]">
                 {r.title} · {r.company}
               </h3>
@@ -79,6 +80,24 @@ export default function CvPage() {
         </dl>
       </Section>
 
+      <Section title="Selected projects (live)">
+        <ul className="list-disc space-y-0.5 pl-4">
+          {linked.map((p) => (
+            <li key={p.id}>
+              <span className="font-semibold">{p.name}</span> ({p.owner}, {p.stack.join(", ")}):{" "}
+              {p.links!.map((l, i) => (
+                <span key={l.href}>
+                  {i ? " · " : ""}
+                  <a href={l.href} className="text-accent">
+                    {l.label}
+                  </a>
+                </span>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       <Section title="Open source">
         <ul className="list-disc space-y-0.5 pl-4">
           {oss.map((p) => (
@@ -91,7 +110,7 @@ export default function CvPage() {
                     <span key={l.href}>
                       {i ? ", " : ""}
                       <a href={l.href} className="text-accent">
-                        {l.href.replace(/^https?:\/\/(www\.)?/, "")}
+                        {l.label}
                       </a>
                     </span>
                   ))}
@@ -118,6 +137,25 @@ export default function CvPage() {
             </p>
           </div>
         ))}
+      </Section>
+
+      <Section title="Certifications and languages">
+        <p>
+          {certifications.map((c, i) => (
+            <span key={c.name}>
+              {i ? " · " : ""}
+              <span className="font-semibold">{c.name}</span> ({c.issuer})
+            </span>
+          ))}
+        </p>
+        <p className="mt-1">
+          {languages.map((l, i) => (
+            <span key={l.name}>
+              {i ? " · " : ""}
+              <span className="font-semibold">{l.name}</span>: {l.level}
+            </span>
+          ))}
+        </p>
       </Section>
     </main>
   );

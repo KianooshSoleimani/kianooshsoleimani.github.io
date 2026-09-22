@@ -35,7 +35,7 @@ export const profile: Profile = {
     "Full-stack engineer with 10+ years of production experience across React, React Native, Next.js and Node.js/NestJS, working remotely with teams in Canada, the UK and Iran.",
     "Built and shipped the AI layer of Humanet, a live healthcare EHR platform, on AWS Bedrock and NestJS: a conversational assistant, intent classification, evidence-grounded clinical data extraction and an AI medical scribe.",
     "Owned a ride-hailing platform for seven years, from the driver and customer apps to the partner admin panel and NestJS microservices, cutting app performance overhead by 70%.",
-    "Brings durable engineering habits to a remote team: CI/CD on every commit, code review and mentoring, and pragmatic use of AI tooling to ship faster without lowering quality.",
+    "Brings durable engineering habits to a remote team: typed functional TypeScript (fp-ts, parse-don't-validate), CI/CD on every commit, code review and mentoring, and pragmatic use of AI tooling.",
   ],
   location: "Wigston, Leicestershire, United Kingdom",
   rightToWork: "Right to work in the UK",

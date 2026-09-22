@@ -16,7 +16,7 @@ import {
   TabStopType,
   TextRun,
 } from "docx";
-import { education, profile, projects, skills } from "../content/index";
+import { certifications, education, languages, profile, projects, skills } from "../content/index";
 import { experience } from "../content/experience";
 
 const OUT = join(process.cwd(), "out");
@@ -65,6 +65,7 @@ const contactBits: (TextRun | ExternalHyperlink)[] = [
 if (profile.phone) contactBits.splice(2, 0, text(`  ·  ${profile.phone}`, { color: MUTED, size: 19 }));
 
 const oss = projects.filter((p) => p.branch === "oss");
+const linked = projects.filter((p) => p.branch !== "oss" && p.links?.length);
 
 const doc = new Document({
   creator: profile.name,
@@ -121,6 +122,20 @@ const doc = new Document({
             }),
         ),
 
+        heading("Selected projects (live)"),
+        ...linked.map(
+          (p) =>
+            new Paragraph({
+              numbering: { reference: "bullets", level: 0 },
+              spacing: { after: 40 },
+              children: [
+                text(`${p.name} `, { bold: true }),
+                text(`(${p.owner}, ${p.stack.join(", ")}): `),
+                ...(p.links ?? []).flatMap((l, i) => [text(i ? " · " : "", { color: MUTED }), link(l.label, l.href)]),
+              ],
+            }),
+        ),
+
         heading("Open source"),
         ...oss.map(
           (p) =>
@@ -130,7 +145,7 @@ const doc = new Document({
               children: [
                 text(`${p.name} — `, { bold: true }),
                 text(p.description),
-                ...(p.links ?? []).flatMap((l, i) => [text(i ? ", " : "  ", { color: MUTED }), link(l.href.replace(/^https?:\/\/(www\.)?/, ""), l.href)]),
+                ...(p.links ?? []).flatMap((l, i) => [text(i ? ", " : "  ", { color: MUTED }), link(l.label, l.href)]),
               ],
             }),
         ),
@@ -143,6 +158,16 @@ const doc = new Document({
             children: [text(`${e.institution}, ${e.location}${e.thesis ? ` — Thesis: ${e.thesis}` : ""}`, { color: MUTED, size: 19 })],
           }),
         ]),
+
+        heading("Certifications and languages"),
+        new Paragraph({
+          spacing: { after: 40 },
+          children: certifications.flatMap((c, i) => [text(i ? "  ·  " : "", { color: MUTED }), text(c.name, { bold: true }), text(` (${c.issuer})`)]),
+        }),
+        new Paragraph({
+          spacing: { after: 40 },
+          children: languages.flatMap((l, i) => [text(i ? "  ·  " : "", { color: MUTED }), text(`${l.name}: `, { bold: true }), text(l.level)]),
+        }),
       ],
     },
   ],

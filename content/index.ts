@@ -5,3 +5,4 @@ export { skills } from "./skills";
 export { projects } from "./projects";
 export { education } from "./education";
 export { experience } from "./experience";
+export { certifications, languages } from "./credentials";

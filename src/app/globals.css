@@ -107,7 +107,7 @@ body {
 /* Print / CV page */
 @page {
   size: A4;
-  margin: 13mm 14mm;
+  margin: 11mm 13mm;
 }
 @media print {
   html,

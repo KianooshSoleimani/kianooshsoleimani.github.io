@@ -55,32 +55,39 @@ export function Repos() {
         ))}
       </div>
 
-      {rest.length ? (
-        <div className="mt-6">
-          <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted">open source</h3>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {rest.map((p) => (
-              <article key={p.id} className="rounded-xl border border-border bg-card p-4">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-2 w-2 rounded-full" style={{ background: color.get(p.branch) }} aria-hidden />
-                  <h4 className="text-sm font-semibold">{p.name}</h4>
-                  <span className="ml-auto font-mono text-xs text-muted">{p.period}</span>
-                </div>
-                <p className="mt-2 text-sm text-muted">{p.description}</p>
-                {p.links?.length ? (
-                  <p className="mt-3 flex flex-wrap gap-3 font-mono text-xs">
-                    {p.links.map((l) => (
-                      <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-accent hover:underline">
-                        {l.label} ↗
-                      </a>
-                    ))}
+      {[
+        { title: "client work", items: rest.filter((p) => p.branch !== "oss") },
+        { title: "open source", items: rest.filter((p) => p.branch === "oss") },
+      ]
+        .filter((g) => g.items.length)
+        .map((g) => (
+          <div key={g.title} className="mt-6">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{g.title}</h3>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {g.items.map((p) => (
+                <article key={p.id} className="rounded-xl border border-border bg-card p-4">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block h-2 w-2 rounded-full" style={{ background: color.get(p.branch) }} aria-hidden />
+                    <h4 className="text-sm font-semibold">{p.name}</h4>
+                  </div>
+                  <p className="mt-1 font-mono text-[11px] text-muted">
+                    {p.owner} · {p.period}
                   </p>
-                ) : null}
-              </article>
-            ))}
+                  <p className="mt-2 text-sm text-muted">{p.description}</p>
+                  {p.links?.length ? (
+                    <p className="mt-3 flex flex-wrap gap-3 font-mono text-xs">
+                      {p.links.map((l) => (
+                        <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                          {l.label} ↗
+                        </a>
+                      ))}
+                    </p>
+                  ) : null}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      ) : null}
+        ))}
     </Section>
   );
 }

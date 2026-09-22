@@ -18,7 +18,7 @@ export const branches: Branch[] = [
     label: "education",
     kind: "education",
     color: "#94a3b8",
-    summary: "Azad University (IAU), Tehran — Electrical & Electronics Engineering.",
+    summary: "Islamic Azad University, Science and Research Branch, Tehran — Electronic Engineering.",
     location: "Tehran, Iran",
   },
   {
@@ -64,87 +64,90 @@ export const branches: Branch[] = [
 ];
 
 export const commits: Commit[] = [
-  // ── 2012: the timeline starts ──
+  // ── 2009: the timeline starts ──
   {
     id: "main-init",
     branch: "main",
-    date: "2012-09",
+    date: "2009-09",
+    approx: true,
     title: "init — Tehran, Iran",
-    body: "Start of the timeline: Electrical & Electronics Engineering student.",
+    body: "Start of the timeline: Electronic Engineering student.",
   },
   {
     id: "edu-start",
     branch: "education",
-    date: "2012-09",
+    date: "2009-09",
+    approx: true,
     kind: "branch",
     parents: ["main-init"],
-    title: "Azad University (IAU) — Electrical & Electronics Engineering",
-    body: "Bachelor's and Master's studies, 2012 – 2018.",
+    title: "Islamic Azad University, Science and Research Branch — Electronic Engineering",
+    period: "2009 – 2017",
   },
 
-  // ── 2015: freelance practice begins (still open) ──
-  {
-    id: "fl-start",
-    branch: "freelance",
-    date: "2015-01",
-    kind: "branch",
-    parents: ["main-init"],
-    title: "Freelance — Full-Stack Developer (part-time, ongoing)",
-    body: "Nine web and mobile products for clients in Dubai, Armenia and the US, each run solo from requirements to release: HomeTrust, TravelLeadApp, a customer/driver taxi-hailing pair, Dayra and Sadaf.",
-  },
-
-  // ── 2016 – 2017: Dayamooz ──
+  // ── 2015 – 2017: Dayamooz ──
   {
     id: "dm-start",
     branch: "dayamooz",
-    date: "2016-02",
+    date: "2015-05",
     kind: "branch",
     parents: ["main-init"],
-    title: "Dayamooz — Android Developer",
+    title: "Dayamooz — Android & React Native Developer",
     tags: ["first full-time role"],
+  },
+  {
+    id: "edu-msc",
+    branch: "education",
+    date: "2017-06",
+    approx: true,
+    title: "MSc awarded — thesis: secure transfer of vital patient data via Android and iOS apps",
+    tags: ["MSc"],
   },
   {
     id: "dm-end",
     branch: "main",
-    date: "2017-10",
+    date: "2017-09",
     kind: "merge",
-    parents: ["dm-start"],
-    title: "Left Dayamooz after 1 yr 8 mo → moved to Hoomaan",
+    parents: ["dm-start", "edu-msc"],
+    title: "Left Dayamooz after 2 yrs 4 mo; MSc complete → moved to Hoomaan",
   },
 
   // ── 2017 – 2018: Hoomaan ──
   {
     id: "hm-start",
     branch: "hoomaan",
-    date: "2017-10",
+    date: "2017-09",
     kind: "branch",
     parents: ["dm-end"],
     title: "Hoomaan — React Native Developer",
   },
-
-  // ── 2018 – 2025: Sabana (overlaps Hoomaan's last two months) ──
-  {
-    id: "sb-start",
-    branch: "sabana",
-    date: "2018-04",
-    kind: "branch",
-    parents: ["dm-end"],
-    title: "Sabana — Front-end Developer (React Native)",
-  },
-  {
-    id: "edu-msc",
-    branch: "education",
-    date: "2018-06",
-    title: "MSc awarded — thesis: secure transfer of vital patient data via Android and iOS apps",
-    tags: ["MSc"],
-  },
   {
     id: "hm-end",
     branch: "main",
-    date: "2018-06",
+    date: "2018-05",
     kind: "merge",
-    parents: ["hm-start", "edu-msc"],
-    title: "Left Hoomaan after 8 mo; graduated with the MSc → full-time at Sabana",
+    parents: ["hm-start"],
+    title: "Left Hoomaan after 8 mo → moved to Sabana",
+  },
+
+  // ── 2018 – 2025: Sabana ──
+  {
+    id: "sb-start",
+    branch: "sabana",
+    date: "2018-05",
+    kind: "branch",
+    parents: ["hm-end"],
+    title: "Sabana — Front-end Developer (React, Next.js, React Native)",
+  },
+
+  // ── 2020: freelance practice begins (still open) ──
+  {
+    id: "fl-start",
+    branch: "freelance",
+    date: "2020-01",
+    kind: "branch",
+    parents: ["hm-end"],
+    title: "Freelance — Full-Stack Developer (part-time, ongoing)",
+    body: "Web and mobile products for clients in Dubai, Armenia and the US, each run solo from requirements to release: Dayra Club, HomeTrust, Hood Food, TravelLeadApp and Sadaf.",
   },
   {
     id: "sb-lead",
@@ -160,7 +163,7 @@ export const commits: Commit[] = [
     date: "2025-03",
     kind: "merge",
     parents: ["sb-lead"],
-    title: "Left Sabana after 6 yrs 11 mo → moved to NovaByte Solutions",
+    title: "Left Sabana after 6 yrs 10 mo → moved to NovaByte Solutions",
   },
 
   // ── 2025 – now: NovaByte ──

@@ -7,7 +7,7 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Frontend & Mobile",
-    items: ["React", "Next.js", "React Native", "Expo", "Redux", "React Query", "Tailwind CSS", "Zod"],
+    items: ["React", "Next.js", "React Native", "Expo", "Redux", "React Query", "Apollo Client", "Tailwind CSS", "Ant Design", "Vite", "Zod"],
   },
   {
     label: "Backend & APIs",
@@ -27,10 +27,10 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Data & Cloud",
-    items: ["PostgreSQL", "MongoDB", "Firebase", "AWS (S3, ECS)", "Docker", "GitHub Actions (CI/CD)", "Vercel"],
+    items: ["PostgreSQL", "MongoDB", "Firebase", "AWS (S3, ECS)", "Docker", "GitHub Actions and GitLab CI/CD", "Vercel"],
   },
   {
     label: "Quality & Practice",
-    items: ["Jest", "Unit & integration testing", "Code review", "Mentoring", "Agile / Scrum", "AI-assisted development (Claude, Copilot, Cursor)"],
+    items: ["Functional programming (fp-ts, optics)", "Parse, don't validate", "Jest", "Unit & end-to-end testing", "Performance optimisation", "Code review", "Mentoring", "Agile / Scrum", "AI-assisted development (Claude, Copilot, Cursor)"],
   },
 ];

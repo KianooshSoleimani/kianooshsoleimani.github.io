@@ -29,7 +29,8 @@ export const experience: Role[] = [
       "Shipped an AI medical scribe that turns chunked audio uploads into AWS Transcribe transcripts and SOAP-note drafts with evidence-linked suggested actions.",
       "Designed a durable workflow-automation engine on BullMQ/Redis with event triggers, conditional branching and resumable steps driving appointments, forms, prescriptions and referrals.",
       "Added per-model token metering and monthly spend budgets so every AI feature's cost is measured and capped before it reaches clinicians.",
-      "Delivered full-stack features for EVNS (real estate) and Arcarius Capital (fintech) in Scrum sprints across Next.js, React Native, NestJS and GraphQL.",
+      "Built EVNS for Engel & Völkers Nova Scotia end-to-end: React Native app on the App Store and Google Play, Next.js website and Node.js/Express backend.",
+      "Delivered full-stack features for Arcarius Capital (fintech) in Scrum sprints across Next.js, React Native, NestJS and GraphQL back ends.",
       "Owned GitHub Actions CI/CD and the AWS, MongoDB and Firebase infrastructure, with automated build-and-deploy pipelines running on every commit.",
     ],
     stack: ["TypeScript", "NestJS", "Next.js", "React Native", "GraphQL", "AWS Bedrock", "AWS Transcribe", "BullMQ", "Redis", "MongoDB", "GitHub Actions"],
@@ -38,7 +39,7 @@ export const experience: Role[] = [
   {
     company: "Sabana",
     title: "Full-Stack Developer",
-    period: "Apr 2018 – Mar 2025",
+    period: "May 2018 – Mar 2025",
     location: "Tehran, Iran · hybrid",
     context: "Ride-hailing and logistics platform: driver app, customer product, partner admin panel and backend services.",
     bullets: [
@@ -54,7 +55,7 @@ export const experience: Role[] = [
   {
     company: "Hoomaan",
     title: "React Native Developer",
-    period: "Oct 2017 – Jun 2018",
+    period: "Sep 2017 – May 2018",
     location: "Mashhad, Iran · on-site",
     context: "Mobile agency shipping apps for clients.",
     bullets: [
@@ -66,13 +67,13 @@ export const experience: Role[] = [
   },
   {
     company: "Dayamooz",
-    title: "Android Developer",
-    period: "Feb 2016 – Oct 2017",
+    title: "Android & React Native Developer",
+    period: "May 2015 – Sep 2017",
     location: "Mashhad, Iran · on-site",
     context: "Education product with a native Android app.",
     bullets: [
       "Migrated the core Android app from native Java to React Native, cutting development time and improving performance on the same devices.",
-      "Partnered with the UI/UX team to launch the redesigned interface, owning the implementation from wireframes to release.",
+      "Developed and maintained the Java Android apps, then launched the redesigned Dayamooz app with the UI/UX team, owning implementation from wireframes to release.",
     ],
     stack: ["Java", "Android", "React Native"],
     branch: "dayamooz",
@@ -80,13 +81,13 @@ export const experience: Role[] = [
   {
     company: "Freelance",
     title: "Full-Stack Developer (part-time, alongside the roles above)",
-    period: "Jan 2015 – Present",
+    period: "Jan 2020 – Present",
     location: "Remote · clients in Dubai, Armenia and the US",
-    context: "Nine web and mobile products: HomeTrust (admin panel and web app), TravelLeadApp, a customer/driver taxi-hailing pair, Dayra and Sadaf (marketing site, web app and API each).",
+    context: "Clients include Dayra Club, HomeTrust, Hood Food, TravelLeadApp and Sadaf.",
     bullets: [
       "Delivered nine web and mobile products for international clients, running each engagement solo from requirements and estimates through release and handover.",
     ],
-    stack: ["React", "Next.js", "React Native", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Firebase"],
+    stack: ["React", "Next.js", "React Native", "Vite", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Firebase"],
     branch: "freelance",
   },
 ];
