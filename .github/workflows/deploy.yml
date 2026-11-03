@@ -49,6 +49,15 @@ jobs:
         with:
           path: out
 
+      - name: Upload built site for the AWS deploy
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: out
+          retention-days: 1
+          if-no-files-found: error
+
   deploy:
     if: github.event_name != 'pull_request'
     needs: build
@@ -59,3 +68,56 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  # Live site: kianooshsoleimani.ir is served by AWS (S3 + CloudFront). GitHub Pages above is kept as a fallback.
+  # Credentials are short-lived (GitHub OIDC -> IAM role limited to this bucket and this distribution, main branch only).
+  # Settings are repo variables: AWS_ROLE_ARN, AWS_REGION, S3_BUCKET, CLOUDFRONT_DISTRIBUTION_ID, SITE_URL.
+  deploy-aws:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    concurrency:
+      group: aws-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: out
+
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Sync to S3
+        run: |
+          set -euo pipefail
+          test -f out/index.html
+          # everything except hashed assets: revalidated by the CDN on every request
+          aws s3 sync out "s3://${{ vars.S3_BUCKET }}" --delete --exclude "_next/static/*" \
+            --cache-control "public,max-age=0,must-revalidate" --only-show-errors
+          # content-hashed assets: cache for a year
+          aws s3 sync out/_next/static "s3://${{ vars.S3_BUCKET }}/_next/static" --delete \
+            --cache-control "public,max-age=31536000,immutable" --only-show-errors
+
+      - name: Invalidate the CDN cache
+        run: |
+          set -euo pipefail
+          id=$(aws cloudfront create-invalidation --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --paths "/*" --query Invalidation.Id --output text)
+          aws cloudfront wait invalidation-completed --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" --id "$id"
+
+      - name: Smoke test the live site
+        run: |
+          set -euo pipefail
+          base="${{ vars.SITE_URL }}"
+          for p in / /cv/ /fa/ /Kianoosh-Soleimani-CV.pdf /og.png /robots.txt; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$base$p"); echo "$p -> $code"
+            test "$code" = 200
+          done
+          # the served home page must be byte-identical to what was just built
+          test "$(curl -fsS "$base/" | sha256sum | cut -d' ' -f1)" = "$(sha256sum out/index.html | cut -d' ' -f1)"
+          echo "live site matches the build"
